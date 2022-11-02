@@ -3,9 +3,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # use bash
 SHELL ["/bin/bash", "-c"]
-RUN  sed  -i 's#archive.ubuntu.com#mirrors.ustc.edu.cn#g'  /etc/apt/sources.list && \
-     sed  -i 's#security.ubuntu.com#mirrors.ustc.edu.cn#g'  /etc/apt/sources.list && \
-     apt-get update && \
+# sed  -i 's#archive.ubuntu.com#mirrors.ustc.edu.cn#g'  /etc/apt/sources.list && \
+#     sed  -i 's#security.ubuntu.com#mirrors.ustc.edu.cn#g'  /etc/apt/sources.list && \
+RUN  apt-get update && \
      apt-get remove certbot &&\
      apt-get install -y  vim wget iproute2 locales npm tmux \
          python3-venv libaugeas0 unzip zip iputils-ping curl software-properties-common python3.9 python3-pip  tcpdump net-tools redis-tools git fish openssh-server && \
@@ -15,6 +15,8 @@ RUN  sed  -i 's#archive.ubuntu.com#mirrors.ustc.edu.cn#g'  /etc/apt/sources.list
      /bin/bash && \
      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash && \
      source ~/.bashrc && \
+     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" && \
+     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
      nvm install --lts && \
      sdk install java 8.0.292-open && \
      sdk install maven 3.8.1 && \
