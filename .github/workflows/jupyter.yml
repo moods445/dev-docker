@@ -42,15 +42,15 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: mmmoooddd/ubuntu
+          images: mmmoooddd/jupyter
       
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./jupyter/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ubuntu:dev
+          tags: ${{ secrets.DOCKER_USERNAME }}/jupyter:latest
       #    cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/ubuntu:buildcache
        #   cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/ubuntu:buildcache,mode=max
