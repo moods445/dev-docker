@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "-c"]
 #     sed  -i 's#security.ubuntu.com#mirrors.ustc.edu.cn#g'  /etc/apt/sources.list && \
 RUN  apt-get update && \
      apt-get remove certbot &&\
-     apt-get install -y  vim wget iproute2 locales npm tmux \
+     apt-get install -y  vim wget iproute2 locales npm tmux nload \
          python3-venv libaugeas0 unzip zip iputils-ping curl software-properties-common python3.9 python3-pip  tcpdump net-tools redis-tools git fish openssh-server && \
      curl -s "https://get.sdkman.io" -o sdkman.sh && /bin/bash sdkman.sh && rm -rf sdkman.sh  && \
      source "$HOME/.sdkman/bin/sdkman-init.sh" && \
