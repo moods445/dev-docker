@@ -5,9 +5,9 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && apt-get install -y tmux wget \
     && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh \
     && bash ~/miniconda.sh -b -p $HOME/miniconda \
-    && $HOME/miniconda/bin/conda init bash
-SHELL ["/bin/bash", "--login" , "-c"]
-RUN conda create -n tf python=3.9 \
+    && $HOME/miniconda/bin/conda init \
+    && export PATH="$HOME/miniconda/bin:$PATH" \
+    && conda create -n tf python=3.9 \
     && conda activate tf \
     && pip install --upgrade pip \
     && pip install tensorflow \
