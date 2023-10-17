@@ -1,6 +1,6 @@
 FROM codercom/code-server:latest
-RUN apt-get update && apt-get install wget -y && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh \
+RUN sudo apt-get update && sudo apt-get install wget -y  \
+    && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh \
     && bash ~/miniconda.sh -b -p $HOME/miniconda \
     && $HOME/miniconda/bin/conda init bash \
     && echo "source ~/.bashrc" \
@@ -9,6 +9,6 @@ RUN apt-get update && apt-get install wget -y && \
     && export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" \
     && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  \
     && nvm install v18.18.2  && nvm use v18.18.2 \
-    && apt-get autoremove -y  \
-    && apt-get autoclean -y   \
-    && rm -rf /var/lib/apt/lists/* 
+    && sudo apt-get autoremove -y  \
+    && sudo apt-get autoclean -y   \
+    && sudo rm -rf /var/lib/apt/lists/* 
