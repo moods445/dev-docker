@@ -8,4 +8,7 @@ RUN apt-get update && apt-get install wget -y && \\
     && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash \
     && export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" \
     && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  \
-    && nvm install v18.18.2  && nvm use v18.18.2 
+    && nvm install v18.18.2  && nvm use v18.18.2 \
+    && apt-get autoremove -y  \
+    && apt-get autoclean -y   \
+    && rm -rf /var/lib/apt/lists/* 
